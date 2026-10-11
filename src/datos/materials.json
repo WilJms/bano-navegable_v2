@@ -1,0 +1,1483 @@
+{
+  "_descripcion": "Colores muestreados de las referencias (mediana sRGB por zona) y parámetros PBR. color_base es el que usan Blender y el visor; en la Fase 4 se calibra contra las fotos (ΔE2000 ≤ 8). Regenerar con especificacion/herramientas/muestrear_colores.py.",
+  "_nota_luz": "color_muestreado es el píxel de la foto, con su luz y exposición. albedo_estimado divide esa luz usando un blanco conocido por foto (cubierta en la 2, loza del WC en la 3; la 1 se encadena por la pintura crema). Blancos, metales, vidrios, hojas y el exterior parten del plan (base_desde): en esas zonas la muestra es sobre todo luz (sol directo, LED, reflejos) y queda como objetivo de comparación.",
+  "_ganancias_lineales": {
+    "01-ventana.jpg": [
+      1.437,
+      1.629,
+      1.918
+    ],
+    "02-vanitorio.jpg": [
+      1.629,
+      2.043,
+      2.511
+    ],
+    "03-ducha-wc.jpg": [
+      1.466,
+      1.82,
+      2.214
+    ]
+  },
+  "materiales": {
+    "pintura_crema": {
+      "nombre": "Pintura mate crema cálido (muros zona vanitorio, derrame, cornisa)",
+      "color_plan": "#E9DFD2",
+      "color_muestreado": "#B3967C",
+      "lab_muestreado": [
+        64.04,
+        6.89,
+        17.76
+      ],
+      "albedo_estimado": "#DAC8B4",
+      "color_base": "#EAC89C",
+      "base_desde": "calibrado contra las fotos (qa/calibrar_color.py)",
+      "pbr": {
+        "rugosidad": 0.9,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            812,
+            420,
+            842,
+            1000
+          ],
+          "hex": "#C0A88C",
+          "lab": [
+            70.25,
+            4.4,
+            17.69
+          ],
+          "desv": 20.4
+        },
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            6,
+            420,
+            30,
+            1000
+          ],
+          "hex": "#B2997F",
+          "lab": [
+            64.79,
+            5.25,
+            17.11
+          ],
+          "desv": 13.1
+        },
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            240,
+            110,
+            560,
+            185
+          ],
+          "hex": "#AF9176",
+          "lab": [
+            62.23,
+            7.25,
+            18.56
+          ],
+          "desv": 9.1
+        }
+      ]
+    },
+    "pintura_cielo": {
+      "nombre": "Cielo liso blanco cálido",
+      "color_plan": "#F2ECE3",
+      "color_muestreado": "#9C856D",
+      "lab_muestreado": [
+        57.02,
+        4.99,
+        16.2
+      ],
+      "albedo_estimado": "#C4B9AA",
+      "color_base": "#F2ECE3",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.92,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            200,
+            60,
+            255,
+            115
+          ],
+          "hex": "#AE9680",
+          "lab": [
+            63.65,
+            5.46,
+            14.91
+          ],
+          "desv": 2.9
+        },
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            560,
+            60,
+            690,
+            105
+          ],
+          "hex": "#9B836B",
+          "lab": [
+            56.35,
+            5.43,
+            16.4
+          ],
+          "desv": 2.9
+        }
+      ]
+    },
+    "porcelanato_piso": {
+      "nombre": "Porcelanato gran formato beige cálido mate (piso, continuo en ducha)",
+      "color_plan": "#D9CBB8",
+      "color_muestreado": "#BFA188",
+      "lab_muestreado": [
+        68.27,
+        7.26,
+        17.14
+      ],
+      "albedo_estimado": "#E3D4C6",
+      "color_base": "#EAC39F",
+      "base_desde": "calibrado contra las fotos (qa/calibrar_color.py)",
+      "pbr": {
+        "rugosidad": 0.55,
+        "metalico": 0.0,
+        "especular": 0.5
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            500,
+            1110,
+            780,
+            1260
+          ],
+          "hex": "#C2A38A",
+          "lab": [
+            69.11,
+            7.62,
+            17.24
+          ],
+          "desv": 5.0
+        },
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            60,
+            1000,
+            250,
+            1060
+          ],
+          "hex": "#C7A991",
+          "lab": [
+            71.26,
+            7.29,
+            16.45
+          ],
+          "desv": 3.5
+        },
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            680,
+            1080,
+            840,
+            1250
+          ],
+          "hex": "#AD917B",
+          "lab": [
+            62.14,
+            7.12,
+            15.6
+          ],
+          "desv": 5.0
+        }
+      ]
+    },
+    "porcelanato_muro": {
+      "nombre": "Porcelanato liso 60 × 120 vertical (muros zona húmeda)",
+      "color_plan": "#D9CBB8",
+      "color_muestreado": "#AB8C6F",
+      "lab_muestreado": [
+        60.39,
+        7.49,
+        19.91
+      ],
+      "albedo_estimado": "#D4BFA3",
+      "color_base": "#E3CBA4",
+      "base_desde": "calibrado contra las fotos (qa/calibrar_color.py)",
+      "pbr": {
+        "rugosidad": 0.45,
+        "metalico": 0.0,
+        "especular": 0.5
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            180,
+            330,
+            255,
+            410
+          ],
+          "hex": "#C49F7A",
+          "lab": [
+            67.98,
+            8.55,
+            24.49
+          ],
+          "desv": 9.1
+        },
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            150,
+            565,
+            255,
+            632
+          ],
+          "hex": "#9E8267",
+          "lab": [
+            56.3,
+            6.7,
+            18.66
+          ],
+          "desv": 13.0
+        }
+      ]
+    },
+    "relieve_ondas": {
+      "nombre": "Revestimiento cerámico 3D de ondas horizontales (muro fondo ducha)",
+      "color_plan": "#D3C2AD",
+      "color_muestreado": "#A18467",
+      "lab_muestreado": [
+        57.13,
+        6.82,
+        19.84
+      ],
+      "albedo_estimado": "#C0AD96",
+      "color_base": "#D6C4A4",
+      "base_desde": "calibrado contra las fotos (qa/calibrar_color.py)",
+      "pbr": {
+        "rugosidad": 0.7,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            440,
+            640,
+            640,
+            860
+          ],
+          "hex": "#9E8165",
+          "lab": [
+            56.0,
+            7.01,
+            19.38
+          ],
+          "desv": 6.1
+        },
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            400,
+            290,
+            640,
+            500
+          ],
+          "hex": "#A5876A",
+          "lab": [
+            58.39,
+            7.17,
+            19.9
+          ],
+          "desv": 6.8
+        }
+      ]
+    },
+    "junta": {
+      "nombre": "Junta fina beige",
+      "color_plan": "#C9B9A4",
+      "color_muestreado": null,
+      "lab_muestreado": null,
+      "albedo_estimado": null,
+      "color_base": "#C9B9A4",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.95,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": []
+    },
+    "madera_muebles": {
+      "nombre": "Roble natural medio, veta horizontal (vanitorio y columnas)",
+      "color_plan": "#A47B55",
+      "color_muestreado": "#7F5638",
+      "lab_muestreado": [
+        40.34,
+        13.43,
+        24.21
+      ],
+      "albedo_estimado": "#9C7758",
+      "color_base": "#A48364",
+      "base_desde": "calibrado contra las fotos (qa/calibrar_color.py)",
+      "pbr": {
+        "rugosidad": 0.6,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            200,
+            715,
+            580,
+            775
+          ],
+          "hex": "#835A3C",
+          "lab": [
+            41.95,
+            13.24,
+            24.0
+          ],
+          "desv": 5.4
+        },
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            200,
+            815,
+            580,
+            885
+          ],
+          "hex": "#845B3D",
+          "lab": [
+            42.35,
+            13.19,
+            23.95
+          ],
+          "desv": 6.0
+        },
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            650,
+            740,
+            720,
+            960
+          ],
+          "hex": "#785134",
+          "lab": [
+            38.07,
+            12.86,
+            23.53
+          ],
+          "desv": 4.1
+        },
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            740,
+            740,
+            805,
+            960
+          ],
+          "hex": "#714D30",
+          "lab": [
+            36.05,
+            11.69,
+            23.18
+          ],
+          "desv": 4.2
+        }
+      ]
+    },
+    "madera_ventana": {
+      "nombre": "Roble muy claro o fresno natural, satinado mate (ventana y alféizar)",
+      "color_plan": "#D4B38C",
+      "color_muestreado": "#A77C55",
+      "lab_muestreado": [
+        55.37,
+        11.82,
+        27.74
+      ],
+      "albedo_estimado": "#C79E76",
+      "color_base": "#C7A98D",
+      "base_desde": "calibrado contra las fotos (qa/calibrar_color.py)",
+      "pbr": {
+        "rugosidad": 0.5,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            48,
+            300,
+            72,
+            1100
+          ],
+          "hex": "#AB825B",
+          "lab": [
+            57.44,
+            10.76,
+            27.17
+          ],
+          "desv": 33.4
+        },
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            130,
+            1095,
+            370,
+            1125
+          ],
+          "hex": "#C09165",
+          "lab": [
+            63.67,
+            12.27,
+            30.18
+          ],
+          "desv": 10.1
+        },
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            418,
+            300,
+            438,
+            1100
+          ],
+          "hex": "#A1764F",
+          "lab": [
+            53.06,
+            12.04,
+            28.0
+          ],
+          "desv": 14.9
+        },
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            725,
+            420,
+            755,
+            640
+          ],
+          "hex": "#966C47",
+          "lab": [
+            49.09,
+            12.21,
+            27.2
+          ],
+          "desv": 17.9
+        }
+      ]
+    },
+    "madera_repisas_wc": {
+      "nombre": "Roble ahumado o nogal (repisas sobre el WC)",
+      "color_plan": "#7A5434",
+      "color_muestreado": "#69411B",
+      "lab_muestreado": [
+        31.49,
+        13.62,
+        29.61
+      ],
+      "albedo_estimado": "#755629",
+      "color_base": "#755629",
+      "base_desde": "muestra",
+      "pbr": {
+        "rugosidad": 0.55,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            70,
+            430,
+            255,
+            440
+          ],
+          "hex": "#563D16",
+          "lab": [
+            27.84,
+            6.72,
+            27.63
+          ],
+          "desv": 19.4
+        },
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            70,
+            541,
+            255,
+            548
+          ],
+          "hex": "#6C431D",
+          "lab": [
+            32.46,
+            13.95,
+            29.7
+          ],
+          "desv": 12.0
+        }
+      ]
+    },
+    "cubierta_blanca": {
+      "nombre": "Solid surface blanca con lavamanos integrado, brillo suave",
+      "color_plan": "#F4F2EE",
+      "color_muestreado": "#BAA899",
+      "lab_muestreado": [
+        70.0,
+        4.02,
+        10.12
+      ],
+      "albedo_estimado": "#E7E7E7",
+      "color_base": "#F4F2EE",
+      "base_desde": "neutro",
+      "pbr": {
+        "rugosidad": 0.25,
+        "metalico": 0.0,
+        "especular": 0.5
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            175,
+            672,
+            380,
+            681
+          ],
+          "hex": "#BAA899",
+          "lab": [
+            70.0,
+            4.02,
+            10.12
+          ],
+          "desv": 22.8
+        }
+      ]
+    },
+    "loza_blanca": {
+      "nombre": "Loza blanca del WC",
+      "color_plan": "#F5F4F1",
+      "color_muestreado": "#C3B1A2",
+      "lab_muestreado": [
+        73.32,
+        3.96,
+        10.01
+      ],
+      "albedo_estimado": "#E7E7E7",
+      "color_base": "#F5F4F1",
+      "base_desde": "neutro",
+      "pbr": {
+        "rugosidad": 0.08,
+        "metalico": 0.0,
+        "capa_barniz": 1.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            130,
+            680,
+            230,
+            760
+          ],
+          "hex": "#C3B1A2",
+          "lab": [
+            73.32,
+            3.96,
+            10.01
+          ],
+          "desv": 4.9
+        }
+      ]
+    },
+    "toalla_blanca": {
+      "nombre": "Toallas blancas de rizo",
+      "color_plan": "#F1EDE6",
+      "color_muestreado": "#B39B89",
+      "lab_muestreado": [
+        65.62,
+        5.99,
+        12.71
+      ],
+      "albedo_estimado": "#DFD6D0",
+      "color_base": "#F1EDE6",
+      "base_desde": "neutro",
+      "pbr": {
+        "rugosidad": 1.0,
+        "metalico": 0.0,
+        "brillo_tela": 0.4
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            650,
+            628,
+            735,
+            700
+          ],
+          "hex": "#B49C8A",
+          "lab": [
+            65.99,
+            5.97,
+            12.69
+          ],
+          "desv": 22.4
+        },
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            720,
+            337,
+            800,
+            384
+          ],
+          "hex": "#B29A89",
+          "lab": [
+            65.27,
+            6.15,
+            12.2
+          ],
+          "desv": 15.5
+        }
+      ]
+    },
+    "toalla_topo": {
+      "nombre": "Toalla de baño color topo",
+      "color_plan": "#A08C7A",
+      "color_muestreado": "#947761",
+      "lab_muestreado": [
+        52.23,
+        8.0,
+        16.39
+      ],
+      "albedo_estimado": "#B09D8D",
+      "color_base": "#9A8270",
+      "base_desde": "muestra de la foto 3 (#947761) aclarada levemente",
+      "pbr": {
+        "rugosidad": 1.0,
+        "metalico": 0.0,
+        "brillo_tela": 0.4
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            775,
+            420,
+            800,
+            700
+          ],
+          "hex": "#947761",
+          "lab": [
+            52.23,
+            8.0,
+            16.39
+          ],
+          "desv": 27.8
+        }
+      ]
+    },
+    "alfombra_yute": {
+      "nombre": "Alfombra de yute o algodón natural, tejido grueso, borde trenzado",
+      "color_plan": "#C8B39A",
+      "color_muestreado": "#B59781",
+      "lab_muestreado": [
+        64.6,
+        7.83,
+        15.77
+      ],
+      "albedo_estimado": "#E1D0C4",
+      "color_base": "#B99D80",
+      "base_desde": "muestra relativa al piso (la alfombra es ≈ 15 % más oscura que el piso en la referencia 2)",
+      "pbr": {
+        "rugosidad": 1.0,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            250,
+            1080,
+            560,
+            1170
+          ],
+          "hex": "#B59781",
+          "lab": [
+            64.6,
+            7.83,
+            15.77
+          ],
+          "desv": 12.8
+        }
+      ]
+    },
+    "mimbre": {
+      "nombre": "Fibra natural (caja con tapa y canasto)",
+      "color_plan": "#B08A62",
+      "color_muestreado": "#805536",
+      "lab_muestreado": [
+        40.17,
+        14.29,
+        25.2
+      ],
+      "albedo_estimado": "#9F7754",
+      "color_base": "#9F7754",
+      "base_desde": "muestra",
+      "pbr": {
+        "rugosidad": 0.85,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            715,
+            175,
+            800,
+            225
+          ],
+          "hex": "#835836",
+          "lab": [
+            41.33,
+            13.87,
+            26.72
+          ],
+          "desv": 22.2
+        },
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            60,
+            760,
+            140,
+            805
+          ],
+          "hex": "#7B5234",
+          "lab": [
+            38.72,
+            13.63,
+            24.42
+          ],
+          "desv": 19.2
+        }
+      ]
+    },
+    "ceramica_blanca": {
+      "nombre": "Cerámica blanca mate (maceteros, potes, dispensador, jabonera)",
+      "color_plan": "#EDE8E0",
+      "color_muestreado": "#A58970",
+      "lab_muestreado": [
+        59.03,
+        6.84,
+        17.39
+      ],
+      "albedo_estimado": "#CEBEAC",
+      "color_base": "#EDE8E0",
+      "base_desde": "neutro",
+      "pbr": {
+        "rugosidad": 0.6,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            655,
+            505,
+            705,
+            540
+          ],
+          "hex": "#9F846D",
+          "lab": [
+            57.05,
+            6.79,
+            16.29
+          ],
+          "desv": 28.2
+        },
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            195,
+            622,
+            228,
+            650
+          ],
+          "hex": "#AC8F74",
+          "lab": [
+            61.38,
+            6.88,
+            18.46
+          ],
+          "desv": 20.5
+        }
+      ]
+    },
+    "cemento": {
+      "nombre": "Macetero gris tipo cemento",
+      "color_plan": "#8E8A85",
+      "color_muestreado": "#645038",
+      "lab_muestreado": [
+        35.46,
+        4.69,
+        17.3
+      ],
+      "albedo_estimado": "#786B53",
+      "color_base": "#786B53",
+      "base_desde": "muestra",
+      "pbr": {
+        "rugosidad": 0.9,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            507,
+            585,
+            528,
+            610
+          ],
+          "hex": "#645038",
+          "lab": [
+            35.46,
+            4.69,
+            17.3
+          ],
+          "desv": 8.0
+        }
+      ]
+    },
+    "vidrio_ambar": {
+      "nombre": "Vidrio ámbar (difusores, dispensadores y botellas)",
+      "color_plan": "#5A3418",
+      "color_muestreado": "#2E1E14",
+      "lab_muestreado": [
+        12.98,
+        6.27,
+        9.91
+      ],
+      "albedo_estimado": "#9A9389",
+      "color_base": "#46260F",
+      "base_desde": "plan, oscurecido: en las fotos las botellas con jabón se ven café oscuro",
+      "pbr": {
+        "rugosidad": 0.05,
+        "metalico": 0.0,
+        "transmision": 0.8,
+        "ior": 1.5
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            655,
+            345,
+            678,
+            385
+          ],
+          "hex": "#281B11",
+          "lab": [
+            11.1,
+            4.81,
+            9.07
+          ],
+          "desv": 17.2
+        },
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            392,
+            578,
+            408,
+            605
+          ],
+          "hex": "#AC9781",
+          "lab": [
+            63.79,
+            4.46,
+            14.53
+          ],
+          "desv": 47.2
+        }
+      ]
+    },
+    "vidrio_claro": {
+      "nombre": "Vidrio templado transparente 8–10 mm (frente de ducha, difusor WC)",
+      "color_plan": "#F3F6F5",
+      "color_muestreado": null,
+      "lab_muestreado": null,
+      "albedo_estimado": null,
+      "color_base": "#FAFCFB",
+      "base_desde": "neutro",
+      "pbr": {
+        "rugosidad": 0.0,
+        "metalico": 0.0,
+        "transmision": 1.0,
+        "ior": 1.52,
+        "espesor": 1.0,
+        "color_atenuacion": "#E4EEEA",
+        "especular": 0.3
+      },
+      "textura": null,
+      "muestras": []
+    },
+    "vidrio_satinado": {
+      "nombre": "Vidrio al ácido blanco grisáceo (tabique ducha–WC), canto oscuro",
+      "color_plan": "#D8D9D4",
+      "color_muestreado": "#A19688",
+      "lab_muestreado": [
+        62.65,
+        1.61,
+        8.84
+      ],
+      "albedo_estimado": "#BFC4C3",
+      "color_base": "#BFC4C3",
+      "base_desde": "muestra",
+      "pbr": {
+        "rugosidad": 0.5,
+        "metalico": 0.0,
+        "transmision": 1.0,
+        "ior": 1.52,
+        "espesor": 1.0,
+        "especular": 0.35
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            280,
+            300,
+            360,
+            800
+          ],
+          "hex": "#A19688",
+          "lab": [
+            62.65,
+            1.61,
+            8.84
+          ],
+          "desv": 14.2
+        }
+      ]
+    },
+    "espejo": {
+      "nombre": "Espejo sin marco",
+      "color_plan": "#FFFFFF",
+      "color_muestreado": null,
+      "lab_muestreado": null,
+      "albedo_estimado": null,
+      "color_base": "#FFFFFF",
+      "base_desde": "neutro",
+      "pbr": {
+        "rugosidad": 0.0,
+        "metalico": 1.0
+      },
+      "textura": null,
+      "muestras": []
+    },
+    "cromo": {
+      "nombre": "Cromo brillante (grifería del lavamanos, argolla, portarrollo)",
+      "color_plan": "#E8E8E8",
+      "color_muestreado": null,
+      "lab_muestreado": null,
+      "albedo_estimado": null,
+      "color_base": "#E8E8E8",
+      "base_desde": "neutro",
+      "pbr": {
+        "rugosidad": 0.05,
+        "metalico": 1.0
+      },
+      "textura": null,
+      "muestras": []
+    },
+    "negro_mate": {
+      "nombre": "Metal negro mate (grifería de ducha, herrajes, manillas)",
+      "color_plan": "#1E1E1E",
+      "color_muestreado": "#32271C",
+      "lab_muestreado": [
+        16.57,
+        3.2,
+        9.22
+      ],
+      "albedo_estimado": "#3C362D",
+      "color_base": "#1E1E1E",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.55,
+        "metalico": 0.6
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            545,
+            231,
+            610,
+            242
+          ],
+          "hex": "#33271B",
+          "lab": [
+            16.67,
+            3.56,
+            10.07
+          ],
+          "desv": 5.6
+        },
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            390,
+            645,
+            400,
+            730
+          ],
+          "hex": "#30281D",
+          "lab": [
+            16.67,
+            1.65,
+            8.63
+          ],
+          "desv": 14.3
+        },
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            734,
+            152,
+            754,
+            184
+          ],
+          "hex": "#31251D",
+          "lab": [
+            15.82,
+            4.23,
+            7.49
+          ],
+          "desv": 5.7
+        }
+      ]
+    },
+    "acero_oscuro": {
+      "nombre": "Acero oscuro del desagüe lineal",
+      "color_plan": "#3A3835",
+      "color_muestreado": null,
+      "lab_muestreado": null,
+      "albedo_estimado": null,
+      "color_base": "#3A3835",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.35,
+        "metalico": 1.0
+      },
+      "textura": null,
+      "muestras": []
+    },
+    "pintura_puerta_blanca": {
+      "nombre": "Puerta de acceso, hoja lisa blanca",
+      "color_plan": "#F2EFEA",
+      "color_muestreado": null,
+      "lab_muestreado": null,
+      "albedo_estimado": null,
+      "color_base": "#F2EFEA",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.4,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": []
+    },
+    "cera_vela": {
+      "nombre": "Vela pilar de cera blanca",
+      "color_plan": "#F3EDE2",
+      "color_muestreado": null,
+      "lab_muestreado": null,
+      "albedo_estimado": null,
+      "color_base": "#F3EDE2",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.5,
+        "metalico": 0.0,
+        "subsuperficie": 0.6
+      },
+      "textura": null,
+      "muestras": []
+    },
+    "hoja_verde": {
+      "nombre": "Hojas de potus y plantas de interior",
+      "color_plan": "#4E7A3A",
+      "color_muestreado": "#383213",
+      "lab_muestreado": [
+        20.71,
+        -2.18,
+        20.38
+      ],
+      "albedo_estimado": "#444620",
+      "color_base": "#4E7A3A",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.45,
+        "metalico": 0.0,
+        "translucidez": 0.3
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "02-vanitorio.jpg",
+          "zona": [
+            85,
+            200,
+            130,
+            232
+          ],
+          "hex": "#393214",
+          "lab": [
+            20.83,
+            -1.56,
+            19.96
+          ],
+          "desv": 21.4
+        },
+        {
+          "ref": "03-ducha-wc.jpg",
+          "zona": [
+            85,
+            372,
+            120,
+            395
+          ],
+          "hex": "#34310F",
+          "lab": [
+            19.89,
+            -4.02,
+            21.61
+          ],
+          "desv": 34.0
+        }
+      ]
+    },
+    "led_calido": {
+      "nombre": "Tira LED oculta 2700–3000 K (espejo y nicho)",
+      "color_plan": "#FFC78A",
+      "color_muestreado": null,
+      "lab_muestreado": null,
+      "albedo_estimado": null,
+      "color_base": "#FFC78A",
+      "base_desde": "plan",
+      "pbr": {
+        "emision_k": 2800,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": []
+    },
+    "cesped": {
+      "nombre": "Césped corto de verano",
+      "color_plan": "#8DB65A",
+      "color_muestreado": "#E0E69D",
+      "lab_muestreado": [
+        89.33,
+        -13.24,
+        34.98
+      ],
+      "albedo_estimado": "#FFFFD2",
+      "color_base": "#8DB65A",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.9,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            500,
+            960,
+            700,
+            1060
+          ],
+          "hex": "#E0E59D",
+          "lab": [
+            89.07,
+            -12.74,
+            34.63
+          ],
+          "desv": 7.7
+        },
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            250,
+            985,
+            370,
+            1060
+          ],
+          "hex": "#E0E69D",
+          "lab": [
+            89.33,
+            -13.24,
+            34.98
+          ],
+          "desv": 7.7
+        }
+      ]
+    },
+    "seto": {
+      "nombre": "Seto denso de hoja verde",
+      "color_plan": "#5E8A3C",
+      "color_muestreado": "#9DB77E",
+      "lab_muestreado": [
+        71.24,
+        -19.02,
+        26.14
+      ],
+      "albedo_estimado": "#B9E3AA",
+      "color_base": "#5E8A3C",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.8,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            140,
+            450,
+            360,
+            700
+          ],
+          "hex": "#9DB77E",
+          "lab": [
+            71.24,
+            -19.02,
+            26.14
+          ],
+          "desv": 45.4
+        }
+      ]
+    },
+    "gramineas_doradas": {
+      "nombre": "Gramíneas con espigas doradas",
+      "color_plan": "#C2A878",
+      "color_muestreado": "#707856",
+      "lab_muestreado": [
+        48.95,
+        -9.27,
+        17.72
+      ],
+      "albedo_estimado": "#859675",
+      "color_base": "#C2A878",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.85,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            175,
+            745,
+            290,
+            790
+          ],
+          "hex": "#707856",
+          "lab": [
+            48.95,
+            -9.27,
+            17.72
+          ],
+          "desv": 44.3
+        }
+      ]
+    },
+    "flores_blancas": {
+      "nombre": "Flores blancas (abajo a la izquierda)",
+      "color_plan": "#F0F0EA",
+      "color_muestreado": "#D7E0A1",
+      "lab_muestreado": [
+        87.16,
+        -13.1,
+        29.92
+      ],
+      "albedo_estimado": "#FCFFD8",
+      "color_base": "#F0F0EA",
+      "base_desde": "neutro",
+      "pbr": {
+        "rugosidad": 0.8,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            160,
+            960,
+            222,
+            1010
+          ],
+          "hex": "#D7E0A1",
+          "lab": [
+            87.16,
+            -13.1,
+            29.92
+          ],
+          "desv": 29.5
+        }
+      ]
+    },
+    "ladrillo_envejecido": {
+      "nombre": "Muro de ladrillo rojo envejecido (con hiedra)",
+      "color_plan": "#9A6A55",
+      "color_muestreado": "#988B6A",
+      "lab_muestreado": [
+        58.21,
+        -0.44,
+        19.45
+      ],
+      "albedo_estimado": "#B3AE8F",
+      "color_base": "#9A6A55",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.9,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            600,
+            735,
+            660,
+            800
+          ],
+          "hex": "#988B6A",
+          "lab": [
+            58.21,
+            -0.44,
+            19.45
+          ],
+          "desv": 18.8
+        }
+      ]
+    },
+    "teja": {
+      "nombre": "Techo de tejas de la casa vecina",
+      "color_plan": "#7E5A4A",
+      "color_muestreado": "#DBCABC",
+      "lab_muestreado": [
+        82.34,
+        3.62,
+        9.13
+      ],
+      "albedo_estimado": "#FFFBFB",
+      "color_base": "#7E5A4A",
+      "base_desde": "plan",
+      "pbr": {
+        "rugosidad": 0.8,
+        "metalico": 0.0
+      },
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            694,
+            428,
+            711,
+            448
+          ],
+          "hex": "#DBCABC",
+          "lab": [
+            82.34,
+            3.62,
+            9.13
+          ],
+          "desv": 14.9
+        }
+      ]
+    },
+    "cielo_exterior": {
+      "nombre": "Cielo azul con nubes suaves (HDRI)",
+      "color_plan": "#B8D3EA",
+      "color_muestreado": "#E2F0FB",
+      "lab_muestreado": [
+        94.08,
+        -2.52,
+        -6.88
+      ],
+      "albedo_estimado": "#FFFFFF",
+      "color_base": "#B8D3EA",
+      "base_desde": "plan",
+      "pbr": {},
+      "textura": null,
+      "muestras": [
+        {
+          "ref": "01-ventana.jpg",
+          "zona": [
+            560,
+            215,
+            710,
+            330
+          ],
+          "hex": "#E2F0FB",
+          "lab": [
+            94.08,
+            -2.52,
+            -6.88
+          ],
+          "desv": 4.4
+        }
+      ]
+    }
+  }
+}

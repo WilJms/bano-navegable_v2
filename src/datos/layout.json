@@ -1,0 +1,323 @@
+{
+  "_descripcion": "Única fuente de medidas del Baño Beatriz. Blender, el visor, el validador y los planos leen este archivo. Cambiar una medida y regenerar debe bastar.",
+  "_version": "1.1 — Puerta de control 1 aprobada con cambios: puerta hacia adentro, ducha de 130 cm, ventana francesa, toalla en el paño fijo (ver qa/reporte.md)",
+  "unidades": "cm",
+  "sistema": {
+    "origen": "Esquina interior muro de la puerta × muro izquierdo, a nivel de piso",
+    "x": "Ancho: 0 muro izquierdo (vanitorio) → 180 muro derecho (ducha y WC)",
+    "z": "Profundidad: 0 muro de la puerta → 224 muro de la ventana",
+    "y": "Altura: 0 piso → 250 cielo",
+    "threejs": "Se exporta en metros, Y hacia arriba. El sistema de layout es de mano izquierda (mirando a la ventana, x crece hacia la derecha); three.js es de mano derecha: (x, y, z) en cm → (x/100, y/100, −z/100)"
+  },
+
+  "habitacion": { "ancho": 180, "largo": 224, "alto": 250 },
+
+  "muros": {
+    "espesor": 12,
+    "izquierdo": { "plano": "x", "valor": 0, "terminaciones": [ { "z": [0, 224], "material": "pintura_crema" } ] },
+    "derecho": {
+      "plano": "x", "valor": 180,
+      "terminaciones": [
+        { "z": [0, 130], "material": "relieve_ondas" },
+        { "z": [130, 224], "material": "porcelanato_muro" }
+      ]
+    },
+    "puerta": {
+      "plano": "z", "valor": 0,
+      "terminaciones": [
+        { "x": [0, 100], "material": "pintura_crema" },
+        { "x": [100, 180], "material": "porcelanato_muro" }
+      ]
+    },
+    "ventana": {
+      "plano": "z", "valor": 224, "espesor": 30,
+      "terminaciones": [ { "x": [0, 180], "material": "porcelanato_muro" } ]
+    }
+  },
+
+  "cielo": { "material": "pintura_cielo" },
+
+  "despiece": {
+    "piso": {
+      "material": "porcelanato_piso",
+      "pieza": { "x": 60, "z": 120 },
+      "junta": 0.2,
+      "inicio": { "x": 180, "z": 224 },
+      "_nota": "Piezas enteras desde el muro derecho y el muro de la ventana (esquinas visibles); los cortes quedan bajo los muebles y en la puerta. Continúa dentro de la ducha."
+    },
+    "muro": {
+      "material": "porcelanato_muro",
+      "pieza": { "horizontal": 60, "vertical": 120 },
+      "junta": 0.2,
+      "junta_horizontal_base": 88,
+      "inicio_horizontal": { "derecho": 224, "ventana": 180, "puerta": 180 },
+      "_nota": "Juntas horizontales a 88 y 208 cm, medidas en la referencia 3. Piezas verticales enteras desde la esquina visible de cada muro."
+    },
+    "relieve_ondas": {
+      "pieza": { "horizontal": 30, "vertical": 90 },
+      "periodo_vertical": 14,
+      "longitud_onda": 50,
+      "ondulacion": 4.0,
+      "profundidad": 0.8,
+      "_nota": "Ondas horizontales de piso a cielo en el muro fondo de la ducha, generadas como geometría real. Crestas tipo duna que suben y bajan ±ondulacion cm a lo largo del muro, en contrafase con sus vecinas (se juntan y separan como escamas); 0,8 cm de relieve, como se lee en la referencia 3 con la luz rasante del foco."
+    }
+  },
+
+  "puerta_acceso": {
+    "vano": { "x": [34, 96], "y": [0, 200] },
+    "muro": "puerta",
+    "abre": "adentro",
+    "lado_bisagras": "x_min",
+    "hoja_espesor": 4,
+    "marco_ancho": 3,
+    "tope_grados": 78,
+    "manilla": { "x": 89, "y": 100, "tipo": "palanca negra con roseta y escudo de llave" },
+    "_nota": "62 cm libres entre la columna estrecha y la ducha. Abre hacia adentro (dato de la obra), con bisagras del lado de la columna estrecha: del lado de la ducha la hoja abierta quedaría contra el vidrio y la toalla. Su tope lo da la esquina del vanitorio: tope_grados debe quedar bajo el máximo que calcula el validador. El visor anima la apertura hasta ese tope."
+  },
+
+  "columna_estrecha": {
+    "x": [0, 30], "z": [0, 33], "y": [0, 245],
+    "tablero": 2,
+    "zocalo": { "y": [0, 8], "retranqueo": 3 },
+    "mueble_bajo": { "y": [8, 50], "puertas": 1, "tirador": false },
+    "repisas": [
+      { "id": "ce_repisa_93", "y": 93, "espesor": 3 },
+      { "id": "ce_repisa_150", "y": 150, "espesor": 3 },
+      { "id": "ce_repisa_183", "y": 183, "espesor": 3 }
+    ],
+    "material": "madera_muebles",
+    "_nota": "Alto 245 medido en la referencia 2 (el plan decía 200). Las cotas 'y' de repisas son la cara superior."
+  },
+
+  "vanitorio": {
+    "x": [0, 40], "z": [33, 163], "y": [26, 88],
+    "material": "madera_muebles",
+    "veta": "horizontal",
+    "frentes": [
+      { "id": "cajon_inferior", "y": [26, 54] },
+      { "id": "gola_media", "y": [54, 57], "gola": true },
+      { "id": "cajon_superior", "y": [57, 82] },
+      { "id": "gola_superior", "y": [82, 86], "gola": true }
+    ],
+    "cubierta": { "y": [86, 88], "x": [0, 40], "material": "cubierta_blanca" },
+    "lavamanos": { "z": [73, 123], "x": [8, 34], "profundidad": 12 },
+    "griferia": { "x": 5, "z": 98, "alto": 22, "alcance": 11, "material": "cromo" }
+  },
+
+  "espejo": {
+    "x": [0, 3], "z": [38, 158], "y": [118, 195],
+    "led": { "temperatura_k": 2850, "halo": ["arriba", "abajo"], "potencia_relativa": 1.0 }
+  },
+
+  "columna_alta": {
+    "x": [0, 40], "z": [163, 224], "y": [0, 245],
+    "tablero": 2,
+    "zocalo": { "y": [0, 8], "retranqueo": 3 },
+    "mueble_bajo": { "y": [8, 77], "puertas": 2, "tirador": false },
+    "repisas": [
+      { "id": "ca_repisa_77", "y": 77, "espesor": 3, "_nota": "cubierta del mueble bajo" },
+      { "id": "ca_repisa_117", "y": 117, "espesor": 3 },
+      { "id": "ca_repisa_158", "y": 158, "espesor": 3 },
+      { "id": "ca_repisa_200", "y": 200, "espesor": 3 }
+    ],
+    "material": "madera_muebles"
+  },
+
+  "toallero_argolla": {
+    "cara": "z_min de la columna alta (z 163)", "x": 30, "y": 118, "z": 163, "diametro": 16,
+    "material": "cromo",
+    "toalla": { "ancho": 25, "caida": 30, "material": "toalla_blanca" }
+  },
+
+  "alfombra": { "x": [43, 98], "z": [58, 138], "espesor": 1.5, "material": "alfombra_yute", "borde": "trenzado" },
+
+  "ventana": {
+    "muro": "ventana",
+    "vano": { "x": [45, 135], "y": [95, 250] },
+    "marco": { "y": [95, 225], "ancho_perfil": 4.5, "z_cara_interior": 246, "espesor": 7 },
+    "hojas": { "ancho_perfil": 3.5, "junquillo": 1.0, "abre": "corredera",
+      "corredera": { "hoja": "derecha", "adelanto": 4.5, "_nota": "Corredera de dos rieles (dato del usuario, 10-10-2026; corregido el 11-10): la hoja derecha va siempre en el riel interior, 4,5 cm más adentro que la izquierda, lo justo para pasar 1 cm por delante del parteluz y de la manilla de la hoja izquierda (que sobresale 3 cm). Se abre deslizándose de lado hasta quedar delante de la hoja izquierda; queda abierta la mitad derecha del vano y la hoja no sale del derrame." },
+      "_nota": "Perfiles medidos en la referencia 1 (≈ 4 cm vistos; el plan estimaba 6–7). Las dos hojas de abajo son correderas (antes se suponían abatibles hacia adentro); los montantes son fijos." },
+    "parteluz": { "ancho": 4.5 },
+    "travesano": { "ancho": 2 },
+    "montante": { "alto": 32, "_nota": "24,7 % de la altura medido en la referencia 1" },
+    "derrame": { "profundidad": 22, "material": "pintura_crema" },
+    "cornisa": { "y": [225, 250], "vuelo": 4, "material": "pintura_crema" },
+    "alfeizar": { "x": [42, 138], "y": [92, 95], "z": [220, 246], "material": "madera_ventana" },
+    "herrajes": {
+      "tipo": "ventana francesa: las dos hojas abren, cada una con su manilla junto al encuentro central",
+      "manilla": { "hojas": ["derecha", "izquierda"], "posicion": "encuentro_central", "y": 150, "material": "negro_mate" },
+      "bisagras": [
+        { "lado": "derecho", "y": 203 }, { "lado": "derecho", "y": 185 }, { "lado": "derecho", "y": 110 },
+        { "lado": "izquierdo", "y": 203 }, { "lado": "izquierdo", "y": 185 }, { "lado": "izquierdo", "y": 110 }
+      ],
+      "_nota": "La foto muestra manilla y bisagras en el mismo costado; se corrige con la manilla en el encuentro central y bisagras en ambos costados exteriores. La manilla de la hoja izquierda (simétrica a la derecha respecto del parteluz) se agregó a pedido del usuario el 10-10-2026 para que abran las dos hojas; la escena horneada no la tiene y el visor la agrega como copia reflejada de la derecha."
+    },
+    "material": "madera_ventana"
+  },
+
+  "ducha": {
+    "interior": { "x": [100, 180], "z": [0, 130] },
+    "_nota": "130 cm a lo largo del muro (el plan decía 90): en la referencia 3 la ducha ocupa cerca de 2/3 del muro. El fondo se mantiene en 80 para conservar el pasillo de 60 cm.",
+    "frente_vidrio": {
+      "x": 100, "z": [0, 130], "y": [0, 250], "espesor": 1,
+      "_nota": "x es la cara del lado del pasillo; el espesor crece hacia la ducha. Paño fijo junto al muro de la puerta (sus fijaciones negras son las que se ven en la foto) y puerta junto al tabique, con el tirador cerca del tabique como en la foto.",
+      "paneles": [
+        { "id": "panel_fijo", "tipo": "fijo", "z": [0, 60], "fijaciones": { "muro": "puerta", "y": [21, 219] } },
+        { "id": "puerta_ducha", "tipo": "puerta", "z": [60, 130], "bisagras_en": "z_min", "bisagras": { "tipo": "vidrio-vidrio", "y": [21, 219] },
+          "abre": "afuera", "apertura_max_grados": 58, "_nota_apertura": "Abre hacia el baño (pedido del usuario, 11-10-2026) hasta tocar el frente del vanitorio (58,9° según validar_layout.py); tope a 58°. Abierta cruza el pasillo.", "tirador": { "z": 124, "y": [80, 107] } }
+      ],
+      "material": "vidrio_claro",
+      "material_herrajes": "negro_mate"
+    },
+    "tabique": { "x": [100, 180], "z": 130, "y": [0, 250], "espesor": 1, "material": "vidrio_satinado", "_nota": "z es la cara del lado de la ducha; el espesor crece hacia el WC" },
+    "nicho": {
+      "muro": "derecho", "z": [5, 125], "y": [95, 125], "profundidad": 10,
+      "led": { "temperatura_k": 2700, "posicion": "arriba", "desde_fondo": 2.5, "inclinacion_grados": 40 },
+      "_nota": "Alto 30 cm medido en la referencia 3 (el plan decía 110–125): las botellas con bomba miden ≈ 22 cm y no caben en 15 cm."
+    },
+    "regadera": { "centro_x": 140, "centro_z": 40, "y": 215, "lado": 25, "espesor": 1, "brazo_y": 222, "brazo_desde": "puerta" },
+    "mezclador": {
+      "muro": "puerta", "x": [137, 147], "y": [88, 108],
+      "palanca": { "x": 129, "y": 113, "largo": 14 },
+      "_nota": "Placa bajo el brazo de la regadera y palanca larga con roseta hacia el vidrio, como en la referencia 3 (posiciones medidas en la foto, proporcionales a lo largo del muro)."
+    },
+    "ducha_mano": { "muro": "puerta", "x": [152, 158], "y": [95, 150], "codo_y": 126, "flexible": "negro" },
+    "desague": { "x": [101, 179], "z": [4, 10], "material": "acero_oscuro" },
+    "material_griferia": "negro_mate"
+  },
+
+  "wc": {
+    "x": [115, 180], "eje_z": 178, "y": [0, 80],
+    "taza": { "x": [115, 164], "ancho": 36, "asiento_y": 42 },
+    "estanque": { "x": [163, 180], "ancho": 38, "y": [40, 80] },
+    "material": "loza_blanca"
+  },
+
+  "repisas_wc": {
+    "x": [162, 180], "z": [148, 208], "espesor": 4,
+    "niveles": [
+      { "id": "wc_repisa_inf", "y": 122 },
+      { "id": "wc_repisa_sup", "y": 160 }
+    ],
+    "material": "madera_repisas_wc",
+    "_nota": "Alturas medidas en la referencia 3 (el plan decía 118 y 148)."
+  },
+
+  "portarrollo": { "muro": "ventana", "x": 135, "y": 70, "material": "cromo", "_nota": "A unos 20 cm del borde delantero de la taza, al alcance sentado." },
+
+  "pasillo": {
+    "x": [0, 180], "z": [-122, -12], "y": [0, 250],
+    "materiales": { "muros": "pintura_crema", "piso": "porcelanato_piso", "cielo": "pintura_cielo" },
+    "foco": { "x": 65, "z": -67 },
+    "_nota": "Pasillo neutro detrás de la puerta de acceso (no aparece en las fotos): solo para que al abrir la puerta en el recorrido no se vea el vacío. Con su propio foco."
+  },
+
+  "calentador_toallas": {
+    "muro": "ventana", "x": [141, 175], "y": [120, 200], "separacion_muro": 7,
+    "tipo": "eléctrico de escalera", "material": "negro_mate",
+    "tubos": { "diametro": 2.5 },
+    "barras": { "diametro": 1.6, "y": [125, 135, 145, 155, 165, 175, 185, 195] },
+    "soportes_y": [130, 190],
+    "control": { "lado": "derecho", "y": [112, 120], "diametro": 3.2 },
+    "toalla": { "barra_y": 195, "ancho": 26, "caida": 36, "material": "toalla_blanca" },
+    "_nota": "Agregado a pedido de la clienta (10-10-2026); no aparece en las fotos. A la derecha de la ventana, centrado a la mitad del alto del marco (160 cm). Entre el vano (x 135) y el muro derecho (x 180) quedan 45 cm: 6 cm libres hacia el vano y 5 hacia el muro. Negro mate como la grifería de la ducha y los herrajes de la ventana; toalla blanca doblada sobre la barra superior. Conexión eléctrica oculta en el muro bajo el control."
+  },
+
+  "toalla_topo": {
+    "soporte": "panel_fijo de la ducha, cara del pasillo",
+    "gancho": { "x": 100, "z": 10, "y": 170, "tipo": "pasante en el vidrio", "material": "negro_mate" },
+    "toalla": { "x": [98, 100], "z": [1, 19], "caida": 95, "material": "toalla_topo", "_nota": "doblada a lo largo en tres (18 cm de ancho), pegada a las fijaciones del paño fijo: en la foto 3 queda en el borde derecho y deja ver la ducha de mano" },
+    "_nota": "Entre el marco de la puerta y el vidrio solo hay 1 cm de muro, así que la toalla cuelga de un gancho pasante en el paño fijo, junto al muro de la puerta (casi el mismo lugar de la foto, sin tapar el vano ni la grifería)."
+  },
+
+  "focos_cielo": [
+    { "id": "foco_vanitorio", "x": 55, "z": 98 },
+    { "id": "foco_wc", "x": 150, "z": 178 },
+    { "id": "foco_ducha", "x": 140, "z": 65 }
+  ],
+  "foco_diametro": 8,
+
+  "decoracion": [
+    { "id": "ce_potus", "tipo": "potus_colgante", "sobre": "ce_repisa_183", "centro": [16, 13], "maceta": [14, 13], "follaje_alto": 12, "caida": 32, "material_maceta": "ceramica_blanca" },
+    { "id": "ce_toallas_150", "tipo": "toallas_dobladas", "sobre": "ce_repisa_150", "centro": [11, 19], "caja": [18, 15, 24], "cantidad": 3 },
+    { "id": "ce_bol", "tipo": "bol_madera", "sobre": "ce_repisa_150", "centro": [25, 9], "cilindro": [10, 5], "material": "madera_muebles" },
+    { "id": "ce_difusor", "tipo": "difusor_varillas", "sobre": "ce_repisa_93", "centro": [16, 7], "cilindro": [6, 11], "varillas": 26, "material": "vidrio_ambar" },
+    { "id": "ce_potes", "tipo": "potes_ceramicos", "sobre": "ce_repisa_93", "centro": [16, 16], "cilindro": [8, 13], "cantidad": 2, "material": "ceramica_blanca" },
+    { "id": "ce_vela", "tipo": "vela_pilar", "sobre": "ce_repisa_93", "centro": [20, 25], "cilindro": [8, 9], "encendida": true },
+    { "id": "ce_canasto", "tipo": "canasto_toallas", "sobre": "columna_estrecha.mueble_bajo", "centro": [15, 16], "cilindro": [26, 14], "toallas_enrolladas": 4, "material": "mimbre" },
+
+    { "id": "ca_potus", "tipo": "potus_colgante", "sobre": "ca_repisa_200", "centro": [18, 179], "maceta": [15, 14], "follaje_alto": 12, "caida": 22, "material_maceta": "ceramica_blanca" },
+    { "id": "ca_caja_mimbre", "tipo": "caja_mimbre_tapa", "sobre": "ca_repisa_200", "centro": [18, 205], "caja": [22, 17, 30], "material": "mimbre" },
+    { "id": "ca_difusor", "tipo": "difusor_varillas", "sobre": "ca_repisa_158", "centro": [18, 175], "cilindro": [7, 12], "varillas": 28, "material": "vidrio_ambar" },
+    { "id": "ca_pote_158", "tipo": "pote_tapa", "sobre": "ca_repisa_158", "centro": [20, 185], "cilindro": [9, 8], "material": "ceramica_blanca" },
+    { "id": "ca_toallas_158", "tipo": "toallas_dobladas", "sobre": "ca_repisa_158", "centro": [18, 205], "caja": [22, 12, 31], "cantidad": 2 },
+    { "id": "ca_planta", "tipo": "planta_hoja", "sobre": "ca_repisa_117", "centro": [18, 178], "maceta": [15, 12], "follaje_alto": 14, "material_maceta": "ceramica_blanca" },
+    { "id": "ca_toallas_piramide", "tipo": "toallas_enrolladas", "sobre": "ca_repisa_117", "centro": [18, 206], "caja": [22, 20, 32], "cantidad": 3 },
+    { "id": "ca_toallas_77", "tipo": "toallas_dobladas", "sobre": "ca_repisa_77", "centro": [18, 182], "caja": [22, 18, 32], "cantidad": 3 },
+    { "id": "ca_dispensador", "tipo": "dispensador_bomba", "sobre": "ca_repisa_77", "centro": [20, 205], "cilindro": [8, 18], "material": "ceramica_blanca" },
+    { "id": "ca_pote_madera", "tipo": "pote_tapa_madera", "sobre": "ca_repisa_77", "centro": [20, 216], "cilindro": [9, 8], "material": "ceramica_blanca" },
+
+    { "id": "cub_bandeja_izq", "tipo": "bandeja_redonda", "sobre": "vanitorio.cubierta", "centro": [22, 55], "cilindro": [24, 1.5], "material": "madera_muebles" },
+    { "id": "cub_planta_izq", "tipo": "planta_hoja", "sobre": "cub_bandeja_izq", "centro": [22, 50], "maceta": [10, 9], "follaje_alto": 12, "material_maceta": "ceramica_blanca" },
+    { "id": "cub_vela_izq", "tipo": "vela_pilar", "sobre": "cub_bandeja_izq", "centro": [24, 61], "cilindro": [6, 7], "encendida": true },
+    { "id": "cub_bandeja_der", "tipo": "bandeja_redonda", "sobre": "vanitorio.cubierta", "centro": [22, 140], "cilindro": [22, 1.5], "material": "madera_muebles" },
+    { "id": "cub_dispensador", "tipo": "dispensador_bomba", "sobre": "cub_bandeja_der", "centro": [22, 134], "cilindro": [6, 14], "material": "vidrio_ambar" },
+    { "id": "cub_suculenta", "tipo": "suculenta", "sobre": "cub_bandeja_der", "centro": [22, 145], "maceta": [8, 9], "follaje_alto": 11, "material_maceta": "ceramica_blanca" },
+
+    { "id": "wc_potus", "tipo": "potus_colgante", "sobre": "wc_repisa_sup", "centro": [171, 190], "maceta": [14, 12], "follaje_alto": 10, "caida": 45, "material_maceta": "ceramica_blanca" },
+    { "id": "wc_toallas", "tipo": "toallas_dobladas", "sobre": "wc_repisa_inf", "centro": [171, 175], "caja": [15, 9, 27], "cantidad": 2 },
+    { "id": "wc_difusor", "tipo": "difusor_varillas", "sobre": "wc_repisa_inf", "centro": [171, 158], "cilindro": [6, 8], "varillas": 24, "material": "vidrio_claro" },
+
+    { "id": "nicho_botella_1", "tipo": "botella_bomba", "sobre": "ducha.nicho", "centro": [184, 99], "cilindro": [6, 21], "material": "vidrio_ambar" },
+    { "id": "nicho_botella_2", "tipo": "botella_bomba", "sobre": "ducha.nicho", "centro": [184, 90], "cilindro": [6, 21], "material": "vidrio_ambar" },
+    { "id": "nicho_planta", "tipo": "planta_hoja", "sobre": "ducha.nicho", "centro": [184, 47], "maceta": [8, 9], "follaje_alto": 11, "material_maceta": "cemento" },
+    { "id": "nicho_jabonera", "tipo": "jabonera", "sobre": "ducha.nicho", "centro": [184, 27], "caja": [8, 2, 12], "jabon": [5, 3, 8], "material": "ceramica_blanca" }
+  ],
+
+  "exterior": {
+    "nivel_terreno": -15,
+    "_nota": "Posiciones preliminares estimadas desde la referencia 1 (horizonte a 160 cm, cámara a ≈ 107 cm del vidrio). Se calibran en la Fase 3 comparando con la foto.",
+    "cesped": { "x": [-500, 800], "z": [254, 1700] },
+    "flores_blancas": { "x": [-45, 15], "z": [400, 480], "alto": 35 },
+    "gramineas_espigas": { "x": [-70, 10], "z": [570, 610], "alto": 90 },
+    "plantas_hoja_ancha": [ { "x": [-40, 30], "z": [550, 600], "alto": 45 }, { "x": [100, 190], "z": [565, 605], "alto": 50 } ],
+    "seto": { "x": [-450, 260], "z": [760, 850], "alto": 360 },
+    "muro_ladrillo": { "x": [200, 520], "z": [880, 905], "alto": 230, "hiedra": true },
+    "casa_vecina": { "x": [230, 760], "z": [1150, 1550], "alero": 430, "cumbrera": 560, "chimenea": { "x": 290, "alto": 625 } },
+    "arbol": { "x": -120, "z": 1500, "alto": 920, "copa_diametro": 800 },
+    "hdri": "jardin_soleado",
+    "sol": { "elevacion_grados": 66, "azimut_grados": 120, "_nota": "azimut desde la normal exterior de la ventana (+z) hacia +x. Sol alto de verano de costado (a la derecha y algo detrás del muro de la ventana), para que el jardín se vea iluminado con volumen como en la referencia 1 (cambia el supuesto «sol de tarde entrando en diagonal»). La elevación la da el HDRI." }
+  },
+
+  "visor": {
+    "altura_ojos": 160,
+    "altura_ojos_rango": [150, 175],
+    "fov_horizontal": 88,
+    "plano_cercano": 2,
+    "radio_colision": 18
+  },
+
+  "puntos_de_vista": [
+    {"id": "entrada", "nombre": "Entrada", "pos": [65, 160, 20], "mirar": [90, 140, 224], "_nota": "z 20 (no 10) para respetar el radio de colisión de 18 cm frente a la puerta"},
+    {"id": "vanitorio", "nombre": "Vanitorio", "pos": [80, 160, 98], "mirar": [0, 125, 98]},
+    {"id": "ducha", "nombre": "Ducha", "pos": [62, 160, 95], "mirar": [180, 120, 65]},
+    {"id": "wc", "nombre": "WC", "pos": [62, 160, 178], "mirar": [180, 95, 178]},
+    {"id": "ventana", "nombre": "Ventana", "pos": [85, 160, 155], "mirar": [90, 150, 260]},
+    {"id": "calentador", "nombre": "Calentador de toallas", "pos": [68, 152, 128], "mirar": [160, 150, 224], "fov_horizontal": 52, "formato": "vertical", "_nota": "Render del calentador (pedido 10-10-2026): de pie frente al vanitorio, mirando el rincón de la ventana"},
+    {"id": "ref1", "nombre": "Referencia 1 · Ventana", "pos": [90.4, 160.0, 126.0], "mirar": [90.4, 160.0, 226.0], "fov_horizontal": 47.96, "libre": true, "_nota": "calibrada por qa/calibrar_camaras.py (mínimos cuadrados sobre puntos de la foto)", "shift_x": -0.0, "shift_y": 0.0, "plano_cercano": 2.0, "exposicion": 2.44, "luces": {"foco": 0.0}, "balance": 5600},
+    {"id": "ref2", "nombre": "Referencia 2 · Vanitorio", "pos": [254.9, 135.9, 94.5], "mirar": [154.9, 135.9, 94.5], "fov_horizontal": 54.2, "libre": true, "_nota": "calibrada por qa/calibrar_camaras.py (mínimos cuadrados sobre puntos de la foto)", "shift_x": 0.0627, "shift_y": -0.1903, "plano_cercano": 76.9, "ocultar": ["excluir_coleccion:ducha_wc", "excluir:C13"], "exposicion": -0.49},
+    {"id": "ref3", "nombre": "Referencia 3 · Ducha y WC", "pos": [-145.5, 140.0, 190.0], "mirar": [-45.5, 140.0, 190.0], "fov_horizontal": 47.77, "libre": true, "_nota": "calibrada por qa/calibrar_camaras.py (mínimos cuadrados sobre puntos de la foto)", "shift_x": 0.3468, "shift_y": -0.1863, "plano_cercano": 146.5, "ocultar": ["excluir_coleccion:muebles", "excluir:ce_", "excluir:ca_", "excluir:cub_", "excluir:B08", "excluir:B05", "excluir:B09"], "exposicion": -0.63}
+  ],
+
+  "holguras": {
+    "minimo_paso": 60,
+    "pares": [
+      { "a": "vanitorio", "b": "ducha.frente_vidrio", "tipo": "paso" },
+      { "a": "columna_estrecha", "b": "ducha.frente_vidrio", "tipo": "paso" },
+      { "a": "vanitorio", "b": "wc", "tipo": "paso" },
+      { "a": "columna_alta", "b": "wc", "tipo": "paso" },
+      { "a": "columna_alta", "b": "ventana.vano", "tipo": "separacion" }
+    ]
+  }
+}

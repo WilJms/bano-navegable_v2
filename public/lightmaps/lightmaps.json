@@ -1,0 +1,63 @@
+{
+  "intensidad": 3.141592653589793,
+  "juegos": {
+    "dia": {
+      "arquitectura": {
+        "gmin": -7.625,
+        "gmax": 6.875,
+        "inicio_ganancia": 1010228,
+        "res": 2048,
+        "MB": 1.445,
+        "error_medio": 0.0141,
+        "error_p99": 0.0522,
+        "archivo": "dia/arquitectura.jpg"
+      },
+      "decoracion": {
+        "gmin": -8.5,
+        "gmax": 6.125,
+        "inicio_ganancia": 1939402,
+        "res": 2048,
+        "MB": 3.008,
+        "error_medio": 0.0285,
+        "error_p99": 0.1055,
+        "archivo": "dia/decoracion.jpg"
+      },
+      "muebles": {
+        "gmin": -8.75,
+        "gmax": 5.5,
+        "inicio_ganancia": 1391083,
+        "res": 2048,
+        "MB": 2.174,
+        "error_medio": 0.021,
+        "error_p99": 0.09,
+        "archivo": "dia/muebles.jpg"
+      }
+    }
+  },
+  "ambientes": {
+    "dia": {
+      "exposicion": -1.2,
+      "balance": [
+        [
+          0.8877999782562256,
+          -0.15151000022888184,
+          -0.02127999998629093
+        ],
+        [
+          0.00795000046491623,
+          1.052590012550354,
+          -0.008390000090003014
+        ],
+        [
+          0.011269999668002129,
+          0.039159998297691345,
+          1.4516799449920654
+        ]
+      ],
+      "fondo": {
+        "rotacion": 3.035492333308238,
+        "intensidad": 3.0
+      }
+    }
+  }
+}

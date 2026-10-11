@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es-CL">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#F3ECE2" />
+    <!-- agregado a la pantalla de inicio (iPhone y Android): corre como app a pantalla completa, también bajo el notch -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Baño Beatriz" />
+    <title>Baño Beatriz · Recorrido 3D</title>
+    <meta name="description" content="Recorrido 3D en primera persona del Baño Beatriz: vanitorio de roble, ducha walk-in y ventana al jardín." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23A47B55'/%3E%3Cpath d='M9 22h14v2H9zM11 9h10v11H11z' fill='%23F6F0E8'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./src/ui/estilos.css" />
+  </head>
+  <body>
+    <div id="lienzo"></div>
+
+    <section id="carga" aria-live="polite">
+      <div class="carga-caja">
+        <h1>Baño Beatriz</h1>
+        <p id="carga-texto">Cargando el recorrido…</p>
+        <div class="barra"><div id="carga-barra"></div></div>
+        <p class="carga-pct"><span id="carga-pct">0</span>%</p>
+      </div>
+    </section>
+
+    <section id="inicio" hidden>
+      <div class="inicio-caja">
+        <h1>Baño Beatriz</h1>
+        <p class="sub">Recorrido en primera persona</p>
+        <button id="btn-entrar" class="primario">Entrar</button>
+        <ul class="ayuda-lista" id="ayuda-inicio"></ul>
+      </div>
+    </section>
+
+    <header id="hud" hidden>
+      <div class="marca">Baño Beatriz</div>
+      <nav id="aberturas" class="vidrio" aria-label="Puertas y ventana">
+        <button data-abertura="entrada" aria-pressed="false">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21M3.5 21h17"/><circle cx="14.6" cy="12.2" r="0.9"/></svg>
+          <span><span class="verbo">Abrir</span> <span class="largo">puerta de entrada</span><span class="corto">puerta</span></span>
+        </button>
+        <button data-abertura="ducha" aria-pressed="false">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V8a4.5 4.5 0 0 1 9 0"/><path d="M10 10.5h8"/><path d="M11.5 14v1.2M14 14v1.2M16.5 14v1.2M12.7 17.6v1.2M15.3 17.6v1.2"/></svg>
+          <span><span class="verbo">Abrir</span> <span class="largo">puerta de la ducha</span><span class="corto">ducha</span></span>
+        </button>
+        <button data-abertura="ventana" aria-pressed="false">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3.5" width="16" height="17" rx="1.2"/><path d="M12 3.5v17M4 9.5h16"/><path d="M8.5 15h-2M17.5 15h-2"/></svg>
+          <span><span class="verbo">Abrir</span> <span class="largo">ventana</span><span class="corto">ventana</span></span>
+        </button>
+      </nav>
+      <div class="acciones vidrio">
+        <label class="selector" title="Calidad">
+          <span>Calidad</span>
+          <select id="sel-calidad">
+            <option value="alta">Alta</option>
+            <option value="media">Media</option>
+            <option value="baja">Baja</option>
+          </select>
+        </label>
+        <button id="btn-pantalla" title="Pantalla completa" aria-label="Pantalla completa">
+          <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="texto">Pantalla completa</span>
+        </button>
+        <button id="btn-ayuda" title="Ayuda de controles" aria-label="Ayuda">?</button>
+      </div>
+    </header>
+
+    <aside id="ayuda" hidden>
+      <div class="panel">
+        <h2>Controles</h2>
+        <ul class="ayuda-lista" id="ayuda-panel"></ul>
+        <label class="fila">Altura de ojos <input id="rng-altura" type="range" min="150" max="175" step="1" /> <span id="val-altura"></span> cm</label>
+        <button id="btn-cerrar-ayuda">Cerrar</button>
+      </div>
+    </aside>
+
+    <div id="joystick" hidden><div class="perilla"></div></div>
+    <div id="aviso" role="status" hidden></div>
+
+    <pre id="depuracion" hidden></pre>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
